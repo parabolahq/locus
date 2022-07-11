@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'route.dart';
-import 'scroll.dart';
-import 'theme.dart';
+import 'package:locus/src/core/route.dart';
+import 'package:locus/src/core/scroll.dart';
+import 'package:locus/src/core/theme.dart';
 
 class LocusApp extends StatefulWidget {
   final String title;

@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-
-import 'colors.dart';
 import 'package:flutter/widgets.dart';
 
+import 'package:locus/src/core/colors.dart';
+
 const _kDefaultTheme = LocusThemeData(
-  foregroundColor: LocusColors.white,
-  backgroundColor: LocusColors.black,
+  foregroundColor: LocusColors.black,
+  backgroundColor: LocusColors.white,
   brightness: Brightness.light,
 );
 
@@ -22,7 +22,13 @@ class LocusTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _InheritedLocusTheme(data: data, child: child);
+    return _InheritedLocusTheme(
+      data: data,
+      child: DefaultTextStyle(
+        style: TextStyle(color: data.foregroundColor),
+        child: child,
+      ),
+    );
   }
 
   static LocusThemeData of(BuildContext context) {
