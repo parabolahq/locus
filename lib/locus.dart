@@ -9,5 +9,6 @@ export 'src/core/route.dart';
 
 // Components
 export 'src/components/scaffold.dart';
+export 'src/components/navigation_bar.dart';
 
 export 'package:flutter/widgets.dart';

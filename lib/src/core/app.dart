@@ -3,6 +3,8 @@ import 'package:locus/src/core/route.dart';
 import 'package:locus/src/core/scroll.dart';
 import 'package:locus/src/core/theme.dart';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 class LocusApp extends StatefulWidget {
   final String title;
   final Iterable<Locale> supportedLocales;
@@ -47,6 +49,11 @@ class _LocusAppState extends State<LocusApp> {
       supportedLocales: widget.supportedLocales,
       debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
       showPerformanceOverlay: widget.showPerformanceOverlay,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
     );
   }
 
