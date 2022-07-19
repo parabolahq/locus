@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class Interactable extends StatefulWidget {
@@ -31,6 +32,7 @@ class _InteractableState extends State<Interactable>
   }
 
   Future<void> _animateTapDown() async {
+    HapticFeedback.lightImpact();
     await _controller.animateTo(0, duration: const Duration(milliseconds: 50));
   }
 
@@ -43,18 +45,20 @@ class _InteractableState extends State<Interactable>
     // TODO: Absorb taps while pressed
 
     return GestureDetector(
-      onTapDown: (TapDownDetails details) => _animateTapDown(),
-      onTapUp: (TapUpDetails details) async {
+      onTap: () async {
+        await _animateTapDown();
+        await _animateTapUp();
         await widget.onTap();
-        _animateTapUp();
       },
+      onTapDown: (TapDownDetails details) => _animateTapDown(),
+      onTapUp: (TapUpDetails details) => _animateTapUp(),
       onTapCancel: _animateTapUp,
       child: AnimatedBuilder(
         animation: _controller,
         builder: (BuildContext context, Widget? child) {
           return Opacity(
-            child: Transform.scale(scale: .8 + _controller.value * .2, child: child),
-            opacity: .7 + _controller.value * .3,
+            child: Transform.scale(scale: .85 + _controller.value * .15, child: child),
+            opacity: .5 + _controller.value * .5,
           );
         },
         child: widget.child,
