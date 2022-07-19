@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:locus/src/core/route.dart';
 import 'package:locus/src/core/scroll.dart';
 import 'package:locus/src/core/theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class LocusApp extends StatefulWidget {

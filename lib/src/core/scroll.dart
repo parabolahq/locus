@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:locus/locus.dart';
 
 class LocusScrollBehavior extends ScrollBehavior {
   @override
