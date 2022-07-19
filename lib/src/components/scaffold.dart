@@ -25,8 +25,8 @@ class LocusScaffold extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).padding.bottom + 15,
-                left: 15,
-                right: 15,
+                left: 60,
+                right: 60,
               ),
               alignment: Alignment.bottomCenter,
               child: navigationBar,
