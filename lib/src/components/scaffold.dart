@@ -3,7 +3,7 @@ import 'package:locus/src/core/theme.dart';
 
 class LocusScaffold extends StatelessWidget {
   final Widget body;
-  final PreferredSizeWidget? navigationBar;
+  final Widget? navigationBar;
 
   const LocusScaffold({
     super.key,
@@ -14,32 +14,24 @@ class LocusScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = LocusTheme.of(context);
-    var existingMediaQuery = MediaQuery.of(context);
-
-    if (navigationBar != null) {
-      final padding = EdgeInsets.only(top: MediaQuery.of(context).padding.top + navigationBar!.preferredSize.height);
-      existingMediaQuery = existingMediaQuery.copyWith(padding: padding);
-    }
-
     return DecoratedBox(
       decoration: BoxDecoration(
         color: theme.backgroundColor,
       ),
-      child: MediaQuery(
-        data: existingMediaQuery,
-        child: Stack(
-          children: [
-            body,
-            if (navigationBar != null)
-              Container(
-                padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).padding.top,
-                ),
-                alignment: Alignment.topCenter,
-                child: navigationBar,
-              )
-          ],
-        ),
+      child: Stack(
+        children: [
+          body,
+          if (navigationBar != null)
+            Container(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).padding.bottom + 15,
+                left: 15,
+                right: 15,
+              ),
+              alignment: Alignment.bottomCenter,
+              child: navigationBar,
+            )
+        ],
       ),
     );
   }

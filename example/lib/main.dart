@@ -16,7 +16,13 @@ class _LocusLabAppState extends State<LocusLabApp> {
       home: LocusScaffold(
         navigationBar: NavigationBar(),
         body: ListView.builder(
-          itemBuilder: (context, index) => Text('s'),
+          itemBuilder: (context, index) => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text('Astronomy', style: LocusTheme.of(context).typography.title),
+              Text('Lorem Ipsum'),
+            ],
+          ),
         ),
       ),
       title: 'Lab',

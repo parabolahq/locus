@@ -1,21 +1,20 @@
 import 'package:flutter/widgets.dart';
+import 'package:locus/src/core/theme.dart';
 
-class NavigationBar extends StatefulWidget implements PreferredSizeWidget {
-  @override
-  State<NavigationBar> createState() => _NavigationBarState();
-
-  @override
-  Size get preferredSize => Size(190, 40);
-}
-
-class _NavigationBarState extends State<NavigationBar>
-    with TickerProviderStateMixin {
-  @override
+class NavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints.tight(widget.preferredSize),
-      color: Color.fromRGBO(255, 120, 120, 1),
-      child: Text('Hello, world'),
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(250),
+        color: Color.fromRGBO(230, 230, 230, 1),
+      ),
+      constraints: BoxConstraints.expand(height: 50),
+      alignment: Alignment.center,
+      child: Text(
+        'Settings',
+        style: LocusTheme.of(context).typography.body1,
+      ),
     );
   }
 }

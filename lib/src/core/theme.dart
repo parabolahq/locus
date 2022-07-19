@@ -1,14 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-
 import 'package:locus/src/core/colors.dart';
 
-const _kDefaultTheme = LocusThemeData(
-  foregroundColor: LocusColors.black,
-  backgroundColor: LocusColors.white,
-  brightness: Brightness.light,
-);
+import 'package:locus/src/core/typography.dart';
 
 class LocusTheme extends StatelessWidget {
   final LocusThemeData data;
@@ -25,7 +19,7 @@ class LocusTheme extends StatelessWidget {
     return _InheritedLocusTheme(
       data: data,
       child: DefaultTextStyle(
-        style: TextStyle(color: data.foregroundColor),
+        style: data.typography.body2,
         child: child,
       ),
     );
@@ -57,31 +51,42 @@ class _InheritedLocusTheme extends InheritedTheme {
 }
 
 class LocusThemeData with Diagnosticable {
-  final Color? _backgroundColor;
+  final Color backgroundColor;
   final Color? _foregroundColor;
   final Brightness? _brightness;
-
-  // TODO: Implement typography
+  final LocusTypography? _typography;
 
   const LocusThemeData({
-    Color? backgroundColor,
+    this.backgroundColor = LocusColors.white,
     Color? foregroundColor,
     Brightness? brightness,
+    LocusTypography? typography,
   })  : _brightness = brightness,
         _foregroundColor = foregroundColor,
-        _backgroundColor = backgroundColor;
+        _typography = typography;
 
-  Brightness get brightness => _brightness ?? _kDefaultTheme.brightness;
-  Color get foregroundColor =>
-      _foregroundColor ?? _kDefaultTheme.foregroundColor;
-  Color get backgroundColor =>
-      _backgroundColor ?? _kDefaultTheme.backgroundColor;
+  Brightness get brightness {
+    return _brightness ??
+        (backgroundColor.computeLuminance() > .5
+            ? Brightness.light
+            : Brightness.dark);
+  }
+
+  Color get foregroundColor {
+    return _foregroundColor ??
+        (brightness == Brightness.dark ? LocusColors.white : LocusColors.black);
+  }
+
+  LocusTypography get typography =>
+      _typography ?? LocusTypography.fromTheme(this);
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ColorProperty('backgroundColor', _backgroundColor));
+    properties.add(ColorProperty('backgroundColor', backgroundColor));
     properties.add(ColorProperty('foregroundColor', _foregroundColor));
     properties.add(EnumProperty<Brightness?>('brightness', _brightness));
+    properties
+        .add(DiagnosticsProperty<LocusTypography?>('typography', _typography));
   }
 }
