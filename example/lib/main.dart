@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:locus/locus.dart';
 import 'package:locuslab/screens/home_screen.dart';
 
@@ -16,7 +17,7 @@ class _LocusLabAppState extends State<LocusLabApp> {
     return LocusApp(
       title: 'Lab',
       home: HomeScreen(),
-      debugShowCheckedModeBanner: true,
+      theme: LocusThemeData(brightness: Brightness.dark),
     );
   }
 }

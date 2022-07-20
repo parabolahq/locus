@@ -69,6 +69,11 @@ class LocusThemeData with Diagnosticable {
   LocusColorScheme get colorScheme =>
       _colorScheme ?? LocusColorScheme.fromTheme(this);
 
+  SystemUiOverlayStyle get systemUiOverlayStyle =>
+      brightness == Brightness.light
+          ? SystemUiOverlayStyle.dark
+          : SystemUiOverlayStyle.light;
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);

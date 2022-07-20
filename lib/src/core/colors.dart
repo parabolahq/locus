@@ -10,12 +10,13 @@ class LocusColors {
 }
 
 class LocusColorScheme with Diagnosticable {
-  final Color onSurface, surface, controlsSurface;
+  final Color onSurface, surface, controlsSurface, onControlsSurface;
 
-  LocusColorScheme.raw({
+  const LocusColorScheme.raw({
     required this.onSurface,
     required this.surface,
     required this.controlsSurface,
+    required this.onControlsSurface,
   });
 
   double get luminance => surface.computeLuminance();
@@ -29,6 +30,7 @@ class LocusColorScheme with Diagnosticable {
       controlsSurface: bright
           ? LocusColors.grey.withOpacity(.2)
           : LocusColors.white.withOpacity(.2),
+      onControlsSurface: bright ? LocusColors.black : LocusColors.white,
     );
   }
 
@@ -38,6 +40,7 @@ class LocusColorScheme with Diagnosticable {
     properties.add(ColorProperty('controlsBackground', controlsSurface));
     properties.add(ColorProperty('surface', surface));
     properties.add(ColorProperty('onSurface', onSurface));
+    properties.add(ColorProperty('onControlsSurface', onControlsSurface));
   }
 
   static LocusColorScheme lerp(
@@ -46,6 +49,8 @@ class LocusColorScheme with Diagnosticable {
       onSurface: Color.lerp(a.onSurface, b.onSurface, t)!,
       surface: Color.lerp(a.surface, b.surface, t)!,
       controlsSurface: Color.lerp(a.controlsSurface, b.controlsSurface, t)!,
+      onControlsSurface:
+          Color.lerp(a.onControlsSurface, b.onControlsSurface, t)!,
     );
   }
 }

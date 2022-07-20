@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import 'package:locus/src/components/interactable.dart';
-import 'package:locus/src/core/colors.dart';
 import 'package:locus/src/core/theme.dart';
 
 // There's a single tag for all instances of navigation bars because they can
@@ -78,7 +77,14 @@ class _NavigationBarState extends State<NavigationBar> {
                           color: LocusTheme.of(context).colorScheme.surface,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Text('Back'),
+                        child: Text(
+                          'Back',
+                          style: TextStyle(
+                            color: LocusTheme.of(context)
+                                .colorScheme
+                                .onControlsSurface,
+                          ),
+                        ),
                       ),
                     ),
                 ],

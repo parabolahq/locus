@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
-
-const Duration _kPageTransitionDuration = const Duration(milliseconds: 250);
+import 'package:locus/src/core/animations.dart';
 
 class LocusPageRoute<T> extends PageRoute<T> {
   final bool _maintainState;
@@ -48,5 +47,5 @@ class LocusPageRoute<T> extends PageRoute<T> {
   bool get maintainState => _maintainState;
 
   @override
-  Duration get transitionDuration => _kPageTransitionDuration;
+  Duration get transitionDuration => kPageTransitionDuration;
 }

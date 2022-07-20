@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:locus/src/core/route.dart';
 import 'package:locus/src/core/scroll.dart';
@@ -9,16 +10,16 @@ class LocusApp extends StatefulWidget {
   final Iterable<Locale> supportedLocales;
   final bool debugShowCheckedModeBanner, showPerformanceOverlay;
   final Widget? home;
-  final LocusThemeData? theme;
+  final LocusThemeData theme;
 
   const LocusApp({
     super.key,
     required this.title,
     required this.home,
-    this.debugShowCheckedModeBanner = false,
+    this.debugShowCheckedModeBanner = true,
     this.showPerformanceOverlay = false,
     this.supportedLocales = const <Locale>[Locale('ru', 'RU')],
-    this.theme,
+    this.theme = const LocusThemeData(),
   });
 
   @override
@@ -53,23 +54,30 @@ class _LocusAppState extends State<LocusApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      builder: (BuildContext context, Widget? child) {
+        final LocusThemeData effectiveThemeData =
+            MediaQuery.of(context).platformBrightness == Brightness.light
+                ? widget.theme
+                : widget.theme;
+        // TODO: Implement dark theme based
+        // on platform brightness
+
+        return LocusTheme(
+          data: effectiveThemeData,
+          child: child ?? SizedBox.shrink(),
+        );
+      },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final LocusThemeData effectiveThemeData =
-        widget.theme ?? const LocusThemeData();
-
     return ScrollConfiguration(
       behavior: LocusScrollBehavior(),
-      child: LocusTheme(
-        data: effectiveThemeData,
-        child: HeroControllerScope(
-          controller: _heroController,
-          child: Builder(
-            builder: _buildWidgetApp,
-          ),
+      child: HeroControllerScope(
+        controller: _heroController,
+        child: Builder(
+          builder: _buildWidgetApp,
         ),
       ),
     );
