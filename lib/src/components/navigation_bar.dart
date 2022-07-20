@@ -31,7 +31,7 @@ class _HeroTag {
   int get hashCode => identityHashCode(navigator);
 }
 
-class NavigationBar extends StatelessWidget {
+class NavigationBar extends StatefulWidget {
   final Widget? middle;
   final Object heroTag;
 
@@ -41,35 +41,28 @@ class NavigationBar extends StatelessWidget {
     this.heroTag = kDefaultHeroTag,
   });
 
+  @override
+  State<NavigationBar> createState() => _NavigationBarState();
+}
+
+class _NavigationBarState extends State<NavigationBar> {
   Widget build(BuildContext context) {
     final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
     final bool useCloseButton =
         parentRoute is PageRoute<dynamic> && parentRoute.canPop;
 
     return Hero(
-      tag: heroTag == kDefaultHeroTag
+      tag: widget.heroTag == kDefaultHeroTag
           ? _HeroTag(Navigator.of(context))
-          : heroTag,
-      flightShuttleBuilder: (
-        BuildContext flightContext,
-        Animation<double> animation,
-        HeroFlightDirection flightDirection,
-        BuildContext fromHeroContext,
-        BuildContext toHeroContext,
-      ) {
-        return RotationTransition(
-          turns: animation,
-          child: toHeroContext.widget,
-        );
-      },
+          : widget.heroTag,
       child: Container(
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(250),
-          color: Color.fromRGBO(230, 230, 230, 1),
+          color: LocusTheme.of(context).colorScheme.controlsSurface,
         ),
         padding: const EdgeInsets.all(10),
-        constraints: BoxConstraints.expand(height: 50),
+        constraints: BoxConstraints.expand(height: 50, width: 280),
         child: Row(
           children: [
             Expanded(
@@ -80,21 +73,21 @@ class NavigationBar extends StatelessWidget {
                       onTap: () => Navigator.of(context).pop(),
                       child: Container(
                         alignment: Alignment.center,
-                        constraints: BoxConstraints.expand(width: 40),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
-                          color: LocusColors.white,
+                          color: LocusTheme.of(context).colorScheme.surface,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Text('<-'),
+                        child: Text('Back'),
                       ),
                     ),
                 ],
               ),
             ),
-            if (middle != null)
+            if (widget.middle != null)
               DefaultTextStyle(
-                style: LocusTheme.of(context).typography.body1,
-                child: middle!,
+                style: LocusTheme.of(context).typography.title,
+                child: widget.middle!,
               ),
             Expanded(
               child: Row(

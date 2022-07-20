@@ -31,10 +31,10 @@ class LocusTypography with Diagnosticable {
 
     return LocusTypography.raw(
       fontFamily: fontFamily,
-      color: data.foregroundColor,
+      color: data.colorScheme.onSurface,
       // Body/Regular set as [DefaultTextStyle] in [LocusTheme]
       body2: TextStyle(
-        color: data.foregroundColor,
+        color: data.colorScheme.onSurface,
         fontFamily: fontFamily,
         package: 'locus',
         fontWeight: FontWeight.w500,
@@ -43,7 +43,7 @@ class LocusTypography with Diagnosticable {
         height: 1.1,
       ),
       body1: TextStyle(
-        color: data.foregroundColor,
+        color: data.colorScheme.onSurface,
         fontWeight: FontWeight.w600,
         fontFamily: fontFamily,
         fontSize: 17,
@@ -52,7 +52,7 @@ class LocusTypography with Diagnosticable {
         height: 1.1,
       ),
       title: TextStyle(
-        color: data.foregroundColor,
+        color: data.colorScheme.onSurface,
         fontWeight: FontWeight.w700,
         fontSize: 18,
         package: 'locus',
@@ -61,7 +61,7 @@ class LocusTypography with Diagnosticable {
         height: 1.1,
       ),
       heading: TextStyle(
-        color: data.foregroundColor,
+        color: data.colorScheme.onSurface,
         fontWeight: FontWeight.w700,
         fontSize: 26,
         package: 'locus',
@@ -70,7 +70,7 @@ class LocusTypography with Diagnosticable {
         height: 1.1,
       ),
       giant: TextStyle(
-        color: data.foregroundColor,
+        color: data.colorScheme.onSurface,
         fontWeight: FontWeight.w700,
         fontSize: 34,
         package: 'locus',
@@ -79,7 +79,7 @@ class LocusTypography with Diagnosticable {
         height: 1.1,
       ),
       caption2: TextStyle(
-        color: data.foregroundColor,
+        color: data.colorScheme.onSurface,
         fontWeight: FontWeight.w600,
         fontFamily: fontFamily,
         fontSize: 14,
@@ -88,7 +88,7 @@ class LocusTypography with Diagnosticable {
         height: 1.1,
       ),
       caption1: TextStyle(
-        color: data.foregroundColor,
+        color: data.colorScheme.onSurface,
         fontWeight: FontWeight.w700,
         fontFamily: fontFamily,
         fontSize: 14,

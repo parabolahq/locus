@@ -52,41 +52,27 @@ class _InheritedLocusTheme extends InheritedTheme {
 }
 
 class LocusThemeData with Diagnosticable {
-  final Color backgroundColor;
-  final Color? _foregroundColor;
-  final Brightness? _brightness;
+  final Brightness brightness;
   final LocusTypography? _typography;
+  final LocusColorScheme? _colorScheme;
 
   const LocusThemeData({
-    this.backgroundColor = LocusColors.white,
-    Color? foregroundColor,
-    Brightness? brightness,
+    this.brightness = Brightness.light,
     LocusTypography? typography,
-  })  : _brightness = brightness,
-        _foregroundColor = foregroundColor,
-        _typography = typography;
-
-  Brightness get brightness {
-    return _brightness ??
-        (backgroundColor.computeLuminance() > .5
-            ? Brightness.light
-            : Brightness.dark);
-  }
-
-  Color get foregroundColor {
-    return _foregroundColor ??
-        (brightness == Brightness.dark ? LocusColors.white : LocusColors.black);
-  }
+    LocusColorScheme? colorScheme,
+  })  : _typography = typography,
+        _colorScheme = colorScheme;
 
   LocusTypography get typography =>
       _typography ?? LocusTypography.fromTheme(this);
 
+  LocusColorScheme get colorScheme =>
+      _colorScheme ?? LocusColorScheme.fromTheme(this);
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ColorProperty('backgroundColor', backgroundColor));
-    properties.add(ColorProperty('foregroundColor', _foregroundColor));
-    properties.add(EnumProperty<Brightness?>('brightness', _brightness));
+    properties.add(EnumProperty<Brightness?>('brightness', brightness));
     properties
         .add(DiagnosticsProperty<LocusTypography?>('typography', _typography));
   }

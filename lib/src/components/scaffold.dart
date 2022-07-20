@@ -16,7 +16,7 @@ class LocusScaffold extends StatelessWidget {
     final theme = LocusTheme.of(context);
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: theme.backgroundColor,
+        color: theme.colorScheme.surface,
       ),
       child: Stack(
         children: [
@@ -25,8 +25,6 @@ class LocusScaffold extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).padding.bottom + 60,
-                left: 60,
-                right: 60,
               ),
               alignment: Alignment.bottomCenter,
               child: navigationBar,
