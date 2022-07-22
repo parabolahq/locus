@@ -53,4 +53,18 @@ class LocusColorScheme with Diagnosticable {
           Color.lerp(a.onControlsSurface, b.onControlsSurface, t)!,
     );
   }
+
+  LocusColorScheme copyWith({
+    Color? onSurface,
+    Color? surface,
+    Color? controlsSurface,
+    Color? onControlsSurface,
+  }) {
+    return LocusColorScheme.raw(
+      onSurface: onSurface ?? this.onSurface,
+      surface: surface ?? this.surface,
+      controlsSurface: controlsSurface ?? this.controlsSurface,
+      onControlsSurface: onControlsSurface ?? this.onControlsSurface,
+    );
+  }
 }

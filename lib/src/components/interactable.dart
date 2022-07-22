@@ -42,8 +42,6 @@ class _InteractableState extends State<Interactable>
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Absorb taps while pressed
-
     return GestureDetector(
       onTap: () async {
         await _animateTapDown();
@@ -57,7 +55,8 @@ class _InteractableState extends State<Interactable>
         animation: _controller,
         builder: (BuildContext context, Widget? child) {
           return Opacity(
-            child: Transform.scale(scale: .85 + _controller.value * .15, child: child),
+            child: Transform.scale(
+                scale: .85 + _controller.value * .15, child: child),
             opacity: .5 + _controller.value * .5,
           );
         },

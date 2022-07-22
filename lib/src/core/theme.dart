@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:locus/src/core/colors.dart';
@@ -73,6 +74,18 @@ class LocusThemeData with Diagnosticable {
       brightness == Brightness.light
           ? SystemUiOverlayStyle.dark
           : SystemUiOverlayStyle.light;
+
+  LocusThemeData copyWith({
+    Brightness? brightness,
+    LocusTypography? typography,
+    LocusColorScheme? colorScheme,
+  }) {
+    return LocusThemeData(
+      brightness: brightness ?? this.brightness,
+      typography: typography ?? this.typography,
+      colorScheme: colorScheme ?? this.colorScheme,
+    );
+  }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {

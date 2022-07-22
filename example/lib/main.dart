@@ -17,7 +17,7 @@ class _LocusLabAppState extends State<LocusLabApp> {
     return LocusApp(
       title: 'Lab',
       home: HomeScreen(),
-      theme: LocusThemeData(brightness: Brightness.dark),
+      theme: LocusThemeData(brightness: Brightness.light),
     );
   }
 }
