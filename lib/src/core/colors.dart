@@ -10,13 +10,12 @@ class LocusColors {
 }
 
 class LocusColorScheme with Diagnosticable {
-  final Color onSurface, surface, controlsSurface, onControlsSurface;
+  final Color onSurface, surface, controlsSurface;
 
   const LocusColorScheme.raw({
     required this.onSurface,
     required this.surface,
     required this.controlsSurface,
-    required this.onControlsSurface,
   });
 
   double get luminance => surface.computeLuminance();
@@ -28,9 +27,8 @@ class LocusColorScheme with Diagnosticable {
       onSurface: bright ? LocusColors.black : LocusColors.white,
       surface: bright ? LocusColors.white : LocusColors.black,
       controlsSurface: bright
-          ? LocusColors.grey.withOpacity(.2)
-          : LocusColors.white.withOpacity(.2),
-      onControlsSurface: bright ? LocusColors.black : LocusColors.white,
+          ? LocusColors.grey.withOpacity(.15)
+          : LocusColors.white.withOpacity(.15),
     );
   }
 
@@ -40,7 +38,6 @@ class LocusColorScheme with Diagnosticable {
     properties.add(ColorProperty('controlsBackground', controlsSurface));
     properties.add(ColorProperty('surface', surface));
     properties.add(ColorProperty('onSurface', onSurface));
-    properties.add(ColorProperty('onControlsSurface', onControlsSurface));
   }
 
   static LocusColorScheme lerp(
@@ -49,8 +46,6 @@ class LocusColorScheme with Diagnosticable {
       onSurface: Color.lerp(a.onSurface, b.onSurface, t)!,
       surface: Color.lerp(a.surface, b.surface, t)!,
       controlsSurface: Color.lerp(a.controlsSurface, b.controlsSurface, t)!,
-      onControlsSurface:
-          Color.lerp(a.onControlsSurface, b.onControlsSurface, t)!,
     );
   }
 
@@ -58,13 +53,11 @@ class LocusColorScheme with Diagnosticable {
     Color? onSurface,
     Color? surface,
     Color? controlsSurface,
-    Color? onControlsSurface,
   }) {
     return LocusColorScheme.raw(
       onSurface: onSurface ?? this.onSurface,
       surface: surface ?? this.surface,
       controlsSurface: controlsSurface ?? this.controlsSurface,
-      onControlsSurface: onControlsSurface ?? this.onControlsSurface,
     );
   }
 }

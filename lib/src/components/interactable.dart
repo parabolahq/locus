@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:locus/src/core/animations.dart';
 
 class Interactable extends StatefulWidget {
   final Widget child;
@@ -22,7 +23,11 @@ class _InteractableState extends State<Interactable>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, value: 1);
+    _controller = AnimationController(
+      vsync: this,
+      value: 1,
+      duration: kInteractableAnimationDuration,
+    );
   }
 
   @override
@@ -33,11 +38,11 @@ class _InteractableState extends State<Interactable>
 
   Future<void> _animateTapDown() async {
     HapticFeedback.lightImpact();
-    await _controller.animateTo(0, duration: const Duration(milliseconds: 50));
+    await _controller.reverse();
   }
 
   Future<void> _animateTapUp() async {
-    await _controller.animateTo(1, duration: const Duration(milliseconds: 50));
+    await _controller.forward();
   }
 
   @override
@@ -46,7 +51,7 @@ class _InteractableState extends State<Interactable>
       onTap: () async {
         await _animateTapDown();
         await _animateTapUp();
-        await widget.onTap();
+        widget.onTap();
       },
       onTapDown: (TapDownDetails details) => _animateTapDown(),
       onTapUp: (TapUpDetails details) => _animateTapUp(),
@@ -56,7 +61,7 @@ class _InteractableState extends State<Interactable>
         builder: (BuildContext context, Widget? child) {
           return Opacity(
             child: Transform.scale(
-                scale: .85 + _controller.value * .15, child: child),
+                scale: .9 + _controller.value * .1, child: child),
             opacity: .5 + _controller.value * .5,
           );
         },

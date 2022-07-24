@@ -6,6 +6,7 @@ import 'package:locus/src/core/theme.dart';
 
 class PushButton extends StatelessWidget {
   final Widget child;
+  final Widget? leading;
   final LocusColorScheme? _colorScheme;
   final Function onTap;
 
@@ -13,6 +14,7 @@ class PushButton extends StatelessWidget {
     super.key,
     required this.child,
     required this.onTap,
+    this.leading,
     LocusColorScheme? colorScheme,
   }) : _colorScheme = colorScheme;
 
@@ -37,6 +39,11 @@ class PushButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                if (leading != null)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: leading!,
+                  ),
                 child,
               ],
             ),

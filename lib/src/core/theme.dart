@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:locus/src/core/colors.dart';
@@ -20,9 +19,12 @@ class LocusTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     return _InheritedLocusTheme(
       data: data,
-      child: DefaultTextStyle(
-        style: data.typography.body2,
-        child: child,
+      child: IconTheme(
+        data: data.iconTheme,
+        child: DefaultTextStyle(
+          style: data.typography.body2,
+          child: child,
+        ),
       ),
     );
   }
@@ -53,16 +55,19 @@ class _InheritedLocusTheme extends InheritedTheme {
 }
 
 class LocusThemeData with Diagnosticable {
-  final Brightness brightness;
+  final Brightness? brightness;
   final LocusTypography? _typography;
   final LocusColorScheme? _colorScheme;
+  final LocusIconTheme? _iconTheme;
 
   const LocusThemeData({
     this.brightness = Brightness.light,
     LocusTypography? typography,
     LocusColorScheme? colorScheme,
+    LocusIconTheme? iconTheme,
   })  : _typography = typography,
-        _colorScheme = colorScheme;
+        _colorScheme = colorScheme,
+        _iconTheme = iconTheme;
 
   LocusTypography get typography =>
       _typography ?? LocusTypography.fromTheme(this);
@@ -74,6 +79,8 @@ class LocusThemeData with Diagnosticable {
       brightness == Brightness.light
           ? SystemUiOverlayStyle.dark
           : SystemUiOverlayStyle.light;
+
+  IconThemeData get iconTheme => _iconTheme ?? LocusIconTheme.fromTheme(this);
 
   LocusThemeData copyWith({
     Brightness? brightness,
@@ -93,5 +100,16 @@ class LocusThemeData with Diagnosticable {
     properties.add(EnumProperty<Brightness?>('brightness', brightness));
     properties
         .add(DiagnosticsProperty<LocusTypography?>('typography', _typography));
+  }
+}
+
+class LocusIconTheme extends IconThemeData {
+  LocusIconTheme({
+    required super.color,
+    super.size = 20,
+  }) : super(opacity: 1, shadows: []);
+
+  factory LocusIconTheme.fromTheme(LocusThemeData data) {
+    return LocusIconTheme(color: data.colorScheme.onSurface);
   }
 }
