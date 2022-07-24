@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:locus/src/components/icons.dart';
 
 import 'package:locus/src/components/interactable.dart';
 import 'package:locus/src/core/theme.dart';
@@ -77,14 +78,7 @@ class _NavigationBarState extends State<NavigationBar> {
                           color: LocusTheme.of(context).colorScheme.surface,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: Text(
-                          'Back',
-                          style: TextStyle(
-                            color: LocusTheme.of(context)
-                                .colorScheme
-                                .onControlsSurface,
-                          ),
-                        ),
+                        child: Icon(LocusIcons.arrow_left),
                       ),
                     ),
                 ],

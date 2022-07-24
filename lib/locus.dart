@@ -14,5 +14,6 @@ export 'src/components/scaffold.dart';
 export 'src/components/navigation_bar.dart';
 export 'src/components/interactable.dart';
 export 'src/components/buttons.dart';
+export 'src/components/icons.dart';
 
 export 'package:flutter/widgets.dart';
