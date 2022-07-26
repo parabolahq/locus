@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             style: LocusTheme.of(context).typography.giant,
           ),
           SizedBox(height: 20),
-          PushButton(
+          LocusPushButton(
             child: Text('Типографика'),
             leading: Icon(LocusIcons.align_left),
             onTap: () => Navigator.of(context).push(
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          PushButton(
+          LocusPushButton(
             child: Text('Иконки'),
             leading: Icon(LocusIcons.apps),
             onTap: () => Navigator.of(context).push(
@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
           SizedBox(height: 10),
           Hero(
             tag: 'arcylic_container',
-            child: PushButton(
+            child: LocusPushButton(
               child: Text('Hero-анимэйшен'),
               leading: Icon(LocusIcons.star),
               onTap: () => Navigator.of(context).push(

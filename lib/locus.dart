@@ -15,6 +15,10 @@ export 'src/components/card.dart';
 export 'src/components/scaffold.dart';
 export 'src/components/interactable.dart';
 export 'src/components/navigation_bar.dart';
+
+// Buttons
 export 'src/components/buttons/push_button.dart';
+export 'src/components/buttons/icon_button.dart';
+export 'src/components/buttons/base_button.dart';
 
 export 'package:flutter/widgets.dart';

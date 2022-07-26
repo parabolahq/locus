@@ -17,28 +17,25 @@ class HeroScreen extends StatelessWidget {
           children: [
             Hero(
               tag: 'arcylic_container',
-              child: Interactable(
+              child: LocusButton(
+                constraints: BoxConstraints.expand(height: 200),
                 onTap: () => Navigator.of(context).pop(),
-                child: LocusCard(
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints.expand(height: 300),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(LocusIcons.backward, size: 25),
-                        SizedBox(height: 10),
-                        Text(
-                          'Fuck go back',
-                          style: LocusTheme.of(context).typography.body1,
-                        ),
-                      ],
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(LocusIcons.backward, size: 25),
+                    SizedBox(height: 10),
+                    Text(
+                      'Fuck go back',
+                      style: LocusTheme.of(context).typography.body1,
                     ),
-                  ),
+                  ],
                 ),
               ),
             ),
             SizedBox(height: 10),
-            PushButton(
+            LocusPushButton(
+              leading: Icon(LocusIcons.album),
               child: Text('Открыть ещё одну страницу'),
               onTap: () => Navigator.of(context).push(
                 LocusPageRoute(

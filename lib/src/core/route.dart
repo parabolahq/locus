@@ -28,19 +28,23 @@ class LocusPageRoute<T> extends PageRoute<T> {
       scopesRoute: true,
       explicitChildNodes: true,
       child: SlideTransition(
-        position: animation.drive(
-          Tween<Offset>(
-            begin: Offset(1, 0),
-            end: Offset(0, 0),
-          ),
-        ),
+        position: animation
+            .drive(
+              CurveTween(curve: Curves.easeInOutCirc),
+            )
+            .drive(
+              Tween<Offset>(
+                begin: Offset(1, 0),
+                end: Offset(0, 0),
+              ),
+            ),
         child: result,
       ),
     );
   }
 
   @override
-  Color? get barrierColor => LocusColors.grey.withOpacity(.25);
+  Color? get barrierColor => LocusColors.grey.withOpacity(.3);
 
   @override
   String? get barrierLabel => _barrierLabel;

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:locus/src/core/animations.dart';
@@ -56,17 +58,30 @@ class _InteractableState extends State<Interactable>
       onTapDown: (TapDownDetails details) => _animateTapDown(),
       onTapUp: (TapUpDetails details) => _animateTapUp(),
       onTapCancel: _animateTapUp,
-      child: AnimatedBuilder(
-        animation: _controller,
-        builder: (BuildContext context, Widget? child) {
-          return Opacity(
-            child: Transform.scale(
-                scale: .9 + _controller.value * .1, child: child),
-            opacity: .5 + _controller.value * .5,
-          );
-        },
+      child: InteractableDrawer(
+        controller: _controller,
         child: widget.child,
       ),
+    );
+  }
+}
+
+class InteractableDrawer extends AnimatedWidget {
+  final Widget child;
+
+  InteractableDrawer({
+    super.key,
+    required this.child,
+    required AnimationController controller,
+  }) : super(listenable: controller);
+
+  Animation<double> get _feedback => listenable as Animation<double>;
+
+  @override
+  Widget build(BuildContext context) {
+    return Opacity(
+      child: Transform.scale(scale: .9 + _feedback.value * .1, child: child),
+      opacity: .5 + min(_feedback.value, 1) * .5,
     );
   }
 }

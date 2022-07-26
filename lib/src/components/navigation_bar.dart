@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:locus/src/components/buttons/icon_button.dart';
 import 'package:locus/src/components/card.dart';
 import 'package:locus/src/components/icons.dart';
 
@@ -35,10 +36,12 @@ class _HeroTag {
 class NavigationBar extends StatefulWidget with PreferredSizeWidget {
   final Widget middle;
   final Object heroTag;
+  final List<Widget> actions;
 
   const NavigationBar({
     super.key,
     required this.middle,
+    this.actions = const [],
     this.heroTag = kDefaultHeroTag,
   });
 
@@ -67,19 +70,12 @@ class _NavigationBarState extends State<NavigationBar> {
           children: [
             Expanded(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   if (useCloseButton)
-                    Interactable(
+                    LocusIconButton(
+                      child: Icon(LocusIcons.arrow_left),
                       onTap: () => Navigator.of(context).pop(),
-                      child: Container(
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        decoration: BoxDecoration(
-                          color: LocusTheme.of(context).colorScheme.surface,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Icon(LocusIcons.arrow_left),
-                      ),
                     ),
                 ],
               ),
@@ -90,7 +86,8 @@ class _NavigationBarState extends State<NavigationBar> {
             ),
             Expanded(
               child: Row(
-                children: [],
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: widget.actions,
               ),
             ),
           ],
