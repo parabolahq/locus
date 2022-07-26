@@ -1,5 +1,3 @@
-import 'dart:ui' show Brightness;
-
 import 'package:locus/locus.dart';
 import 'package:locuslab/screens/home_screen.dart';
 
@@ -18,7 +16,7 @@ class _LocusLabAppState extends State<LocusLabApp> {
     return LocusApp(
       title: 'Lab',
       home: HomeScreen(),
-      theme: LocusThemeData(brightness: Brightness.light),
+      theme: LocusThemeData(),
     );
   }
 }

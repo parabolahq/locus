@@ -1,9 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:locus/src/components/buttons/icon_button.dart';
+import 'package:locus/src/components/buttons/action_button.dart';
 import 'package:locus/src/components/card.dart';
 import 'package:locus/src/components/icons.dart';
-
-import 'package:locus/src/components/interactable.dart';
 import 'package:locus/src/core/theme.dart';
 
 // There's a single tag for all instances of navigation bars because they can
@@ -43,7 +41,7 @@ class NavigationBar extends StatefulWidget with PreferredSizeWidget {
     required this.middle,
     this.actions = const [],
     this.heroTag = kDefaultHeroTag,
-  });
+  }) : assert(actions.length <= 2);
 
   @override
   State<NavigationBar> createState() => _NavigationBarState();
@@ -63,6 +61,7 @@ class _NavigationBarState extends State<NavigationBar> {
           ? _HeroTag(Navigator.of(context))
           : widget.heroTag,
       child: LocusCard.acrylic(
+        constraints: BoxConstraints.tight(widget.preferredSize),
         borderRadius: BorderRadius.circular(widget.preferredSize.height / 2),
         color: LocusTheme.of(context).colorScheme.controlsSurface,
         padding: const EdgeInsets.all(10),
@@ -73,7 +72,7 @@ class _NavigationBarState extends State<NavigationBar> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   if (useCloseButton)
-                    LocusIconButton(
+                    LocusActionButton(
                       child: Icon(LocusIcons.arrow_left),
                       onTap: () => Navigator.of(context).pop(),
                     ),

@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LocusScaffold(
-      navigationBar: NavigationBar(
+      bottom: NavigationBar(
         middle: Text('Дом'),
       ),
       body: ListView(

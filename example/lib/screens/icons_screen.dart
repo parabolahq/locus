@@ -1,5 +1,3 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:locus/locus.dart';
 
 class IconsScreen extends StatelessWidget {
@@ -8,7 +6,9 @@ class IconsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LocusScaffold(
-      navigationBar: NavigationBar(middle: Text('Иконки')),
+      top: NavigationBar(
+        middle: Text('Иконки'),
+      ),
       body: GridView.builder(
         padding: EdgeInsets.only(
           left: 10,

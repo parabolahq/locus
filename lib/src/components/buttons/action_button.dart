@@ -2,11 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:locus/src/components/buttons/base_button.dart';
 import 'package:locus/src/core/theme.dart';
 
-class LocusIconButton extends StatelessWidget {
+class LocusActionButton extends StatelessWidget {
   final Widget child;
   final Function onTap;
 
-  const LocusIconButton({
+  const LocusActionButton({
     super.key,
     required this.child,
     required this.onTap,

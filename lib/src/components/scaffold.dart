@@ -5,17 +5,20 @@ import 'package:locus/src/core/theme.dart';
 
 class LocusScaffold extends StatelessWidget {
   final Widget body;
-  final PreferredSizeWidget? navigationBar;
+  final Widget? top;
+  final Widget? bottom;
 
   const LocusScaffold({
     super.key,
     required this.body,
-    this.navigationBar,
+    this.top,
+    this.bottom,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = LocusTheme.of(context);
+    final mediaQuery = MediaQuery.of(context);
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: theme.systemUiOverlayStyle,
@@ -25,20 +28,25 @@ class LocusScaffold extends StatelessWidget {
           color: theme.colorScheme.surface,
         ),
         child: Stack(
+          fit: StackFit.expand,
           children: [
             body,
-            if (navigationBar != null)
-              Container(
-                padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).padding.bottom + 60,
-                ),
-                alignment: Alignment.bottomCenter,
-                child: ConstrainedBox(
-                  child: navigationBar!,
-                  constraints:
-                      BoxConstraints.tight(navigationBar!.preferredSize),
-                ),
-              )
+            Padding(
+              padding: EdgeInsets.only(
+                bottom: mediaQuery.padding.bottom + mediaQuery.size.height / 8,
+                top: mediaQuery.padding.top + 15,
+                left: 15,
+                right: 15,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  if (top != null) top!,
+                  Spacer(),
+                  if (bottom != null) bottom!,
+                ],
+              ),
+            )
           ],
         ),
       ),

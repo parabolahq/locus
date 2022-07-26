@@ -6,7 +6,7 @@ class TypographyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LocusScaffold(
-      navigationBar: NavigationBar(
+      bottom: NavigationBar(
         middle: Text('Типографика'),
       ),
       body: ListView(
