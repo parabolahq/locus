@@ -5,8 +5,8 @@ import 'package:locus/src/core/theme.dart';
 
 class LocusScaffold extends StatelessWidget {
   final Widget body;
-  final Widget? top;
-  final Widget? bottom;
+  final PreferredSizeWidget? top;
+  final PreferredSizeWidget? bottom;
 
   const LocusScaffold({
     super.key,
@@ -19,6 +19,12 @@ class LocusScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = LocusTheme.of(context);
     final mediaQuery = MediaQuery.of(context);
+    final paddings = EdgeInsets.only(
+      bottom: mediaQuery.padding.bottom + mediaQuery.size.height / 8,
+      top: mediaQuery.padding.top + 10,
+      left: 15,
+      right: 15,
+    );
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: theme.systemUiOverlayStyle,
@@ -30,14 +36,16 @@ class LocusScaffold extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            body,
-            Padding(
-              padding: EdgeInsets.only(
-                bottom: mediaQuery.padding.bottom + mediaQuery.size.height / 8,
-                top: mediaQuery.padding.top + 15,
-                left: 15,
-                right: 15,
+            MediaQuery(
+              child: body,
+              data: mediaQuery.copyWith(
+                padding: EdgeInsets.only(
+                  top: paddings.top + (top?.preferredSize.height ?? 0),
+                ),
               ),
+            ),
+            Padding(
+              padding: paddings,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
