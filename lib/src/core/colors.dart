@@ -6,7 +6,7 @@ import 'package:locus/src/core/theme.dart';
 class LocusColors {
   static const Color white = Color.fromRGBO(255, 255, 255, 1);
   static const Color black = Color.fromRGBO(0, 0, 0, 1);
-  static const Color darkGrey = Color.fromRGBO(30, 30, 30, 1);
+  static const Color darkGrey = Color.fromRGBO(60, 60, 60, 1);
   static const Color grey = Color.fromRGBO(127, 127, 127, 1);
   static const Color lightGrey = Color.fromRGBO(225, 225, 225, 1);
 }
@@ -29,8 +29,8 @@ class LocusColorScheme with Diagnosticable {
       onSurface: bright ? LocusColors.black : LocusColors.white,
       surface: bright ? LocusColors.white : LocusColors.black,
       controlsSurface: bright
-          ? LocusColors.lightGrey.withOpacity(.7)
-          : LocusColors.white.withOpacity(.15),
+          ? LocusColors.lightGrey.withOpacity(.8)
+          : LocusColors.darkGrey.withOpacity(.8),
     );
   }
 

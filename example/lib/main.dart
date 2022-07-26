@@ -1,4 +1,5 @@
-import 'package:flutter/services.dart';
+import 'dart:ui' show Brightness;
+
 import 'package:locus/locus.dart';
 import 'package:locuslab/screens/home_screen.dart';
 

@@ -1,5 +1,8 @@
 import 'dart:ui';
-import 'package:locus/locus.dart';
+
+import 'package:flutter/widgets.dart';
+import 'package:locus/src/core/animations.dart';
+import 'package:locus/src/core/theme.dart';
 
 class Acrylic extends StatelessWidget {
   final Widget child;

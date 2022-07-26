@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:locus/locus.dart';
 import 'package:locuslab/screens/icons_screen.dart';
+import 'package:locuslab/screens/hero_screen.dart';
 import 'package:locuslab/screens/typography_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -37,6 +40,19 @@ class HomeScreen extends StatelessWidget {
             onTap: () => Navigator.of(context).push(
               LocusPageRoute(
                 builder: (BuildContext context) => IconsScreen(),
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          Hero(
+            tag: 'arcylic_container',
+            child: PushButton(
+              child: Text('Hero-анимэйшен'),
+              leading: Icon(LocusIcons.star),
+              onTap: () => Navigator.of(context).push(
+                LocusPageRoute(
+                  builder: (BuildContext context) => HeroScreen(),
+                ),
               ),
             ),
           ),
