@@ -107,7 +107,8 @@ class LocusIconTheme extends IconThemeData {
   LocusIconTheme({
     required super.color,
     super.size = 20,
-  }) : super(opacity: 1, shadows: []);
+    super.opacity = 1,
+  }) : super(shadows: []);
 
   factory LocusIconTheme.fromTheme(LocusThemeData data) {
     return LocusIconTheme(color: data.colorScheme.onSurface);

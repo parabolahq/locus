@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:locus/locus.dart';
 import 'package:locuslab/screens/icons_screen.dart';
 import 'package:locuslab/screens/hero_screen.dart';
@@ -11,6 +9,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LocusScaffold(
+      navigationBar: NavigationBar(
+        middle: Text('Дом'),
+      ),
       body: ListView(
         padding: EdgeInsets.only(
           left: 15,

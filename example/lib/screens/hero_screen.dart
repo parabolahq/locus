@@ -1,4 +1,5 @@
 import 'package:locus/locus.dart';
+import 'package:locuslab/screens/icons_screen.dart';
 
 class HeroScreen extends StatelessWidget {
   const HeroScreen({Key? key}) : super(key: key);
@@ -16,15 +17,35 @@ class HeroScreen extends StatelessWidget {
           children: [
             Hero(
               tag: 'arcylic_container',
-              child: Acrylic(
-                child: Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Placeholder(
-                    fallbackHeight: 200,
+              child: Interactable(
+                onTap: () => Navigator.of(context).pop(),
+                child: LocusCard(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints.expand(height: 300),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(LocusIcons.backward, size: 25),
+                        SizedBox(height: 10),
+                        Text(
+                          'Fuck go back',
+                          style: LocusTheme.of(context).typography.body1,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
+            SizedBox(height: 10),
+            PushButton(
+              child: Text('Открыть ещё одну страницу'),
+              onTap: () => Navigator.of(context).push(
+                LocusPageRoute(
+                  builder: (BuildContext context) => IconsScreen(),
+                ),
+              ),
+            )
           ],
         ),
       ),

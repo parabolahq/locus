@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:locus/src/components/card.dart';
 
 import 'package:locus/src/components/interactable.dart';
 import 'package:locus/src/core/colors.dart';
@@ -27,15 +28,12 @@ class PushButton extends StatelessWidget {
       data: LocusTheme.of(context).copyWith(
         colorScheme: effectiveColorScheme,
       ),
-      child: DefaultTextStyle(
-        style: LocusTheme.of(context).typography.body1,
-        child: Interactable(
-          child: Container(
-            decoration: BoxDecoration(
-              color: LocusTheme.of(context).colorScheme.controlsSurface,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            height: 50,
+      child: Interactable(
+        onTap: onTap,
+        child: LocusCard(
+          constraints: BoxConstraints.expand(height: 50),
+          child: DefaultTextStyle(
+            style: LocusTheme.of(context).typography.body1,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -48,7 +46,6 @@ class PushButton extends StatelessWidget {
               ],
             ),
           ),
-          onTap: onTap,
         ),
       ),
     );

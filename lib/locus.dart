@@ -11,7 +11,7 @@ export 'src/core/animations.dart';
 
 // Components
 export 'src/components/icons.dart';
-export 'src/components/acrylic.dart';
+export 'src/components/card.dart';
 export 'src/components/scaffold.dart';
 export 'src/components/interactable.dart';
 export 'src/components/navigation_bar.dart';

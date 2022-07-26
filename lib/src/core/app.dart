@@ -40,12 +40,9 @@ class _LocusAppState extends State<LocusApp> {
   WidgetsApp _buildWidgetApp(BuildContext context) {
     return WidgetsApp(
       key: GlobalObjectKey(this),
-      pageRouteBuilder: <T>(RouteSettings settings, WidgetBuilder builder) {
-        return LocusPageRoute<T>(settings: settings, builder: builder);
-      },
-      color: Color.fromRGBO(255, 255, 255, 255),
       home: widget.home,
       title: widget.title,
+      color: widget.theme.colorScheme.surface,
       supportedLocales: widget.supportedLocales,
       debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,
       showPerformanceOverlay: widget.showPerformanceOverlay,
@@ -54,6 +51,9 @@ class _LocusAppState extends State<LocusApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      pageRouteBuilder: <T>(RouteSettings settings, WidgetBuilder builder) {
+        return LocusPageRoute<T>(settings: settings, builder: builder);
+      },
       builder: (BuildContext context, Widget? child) {
         final LocusThemeData effectiveThemeData =
             MediaQuery.of(context).platformBrightness == Brightness.light
