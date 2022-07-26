@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:locus/locus.dart';
 
 class IconsScreen extends StatelessWidget {
-  const IconsScreen({Key? key}) : super(key: key);
+  const IconsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

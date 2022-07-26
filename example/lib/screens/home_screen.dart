@@ -1,10 +1,9 @@
 import 'package:locus/locus.dart';
 import 'package:locuslab/screens/icons_screen.dart';
 import 'package:locuslab/screens/typography_screen.dart';
-import 'package:locuslab/widgets/statement.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

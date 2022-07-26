@@ -10,10 +10,11 @@ export 'src/core/typography.dart';
 export 'src/core/animations.dart';
 
 // Components
-export 'src/components/scaffold.dart';
-export 'src/components/navigation_bar.dart';
-export 'src/components/interactable.dart';
-export 'src/components/buttons.dart';
 export 'src/components/icons.dart';
+export 'src/components/acrylic.dart';
+export 'src/components/scaffold.dart';
+export 'src/components/interactable.dart';
+export 'src/components/navigation_bar.dart';
+export 'src/components/buttons/push_button.dart';
 
 export 'package:flutter/widgets.dart';

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/widgets.dart';
 import 'package:locus/src/core/animations.dart';
+import 'package:locus/src/core/colors.dart';
 
 class LocusPageRoute<T> extends PageRoute<T> {
   final bool _maintainState;
@@ -25,36 +26,24 @@ class LocusPageRoute<T> extends PageRoute<T> {
     Animation<double> secondaryAnimation,
   ) {
     final Widget result = _builder(context);
-    final Animation<double> curved =
-        animation.drive(CurveTween(curve: Curves.easeInOutCubic));
 
     return Semantics(
       scopesRoute: true,
       explicitChildNodes: true,
-      child: AnimatedBuilder(
-        animation: curved,
-        builder: (BuildContext context, Widget? child) {
-          return BackdropFilter(
-            filter: ImageFilter.blur(
-              sigmaX: curved.value * 10,
-              sigmaY: curved.value * 10,
-            ),
-            child: Transform.translate(
-              offset: Offset(
-                0,
-                MediaQuery.of(context).size.height * (1 - curved.value),
-              ),
-              child: child,
-            ),
-          );
-        },
+      child: SlideTransition(
+        position: animation.drive(
+          Tween<Offset>(
+            begin: Offset(0, 1),
+            end: Offset(0, 0),
+          ),
+        ),
         child: result,
       ),
     );
   }
 
   @override
-  Color? get barrierColor => Color.fromRGBO(0, 0, 0, 180);
+  Color? get barrierColor => LocusColors.lightGrey;
 
   @override
   String? get barrierLabel => _barrierLabel;

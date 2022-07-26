@@ -5,7 +5,7 @@ import 'package:locus/src/core/theme.dart';
 
 class LocusScaffold extends StatelessWidget {
   final Widget body;
-  final Widget? navigationBar;
+  final PreferredSizeWidget? navigationBar;
 
   const LocusScaffold({
     super.key,
@@ -33,7 +33,11 @@ class LocusScaffold extends StatelessWidget {
                   bottom: MediaQuery.of(context).padding.bottom + 60,
                 ),
                 alignment: Alignment.bottomCenter,
-                child: navigationBar,
+                child: ConstrainedBox(
+                  child: navigationBar!,
+                  constraints:
+                      BoxConstraints.tight(navigationBar!.preferredSize),
+                ),
               )
           ],
         ),

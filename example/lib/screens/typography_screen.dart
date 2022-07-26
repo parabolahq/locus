@@ -1,7 +1,7 @@
 import 'package:locus/locus.dart';
 
 class TypographyScreen extends StatelessWidget {
-  const TypographyScreen({Key? key}) : super(key: key);
+  const TypographyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

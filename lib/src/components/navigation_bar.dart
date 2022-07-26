@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:locus/src/components/acrylic.dart';
 import 'package:locus/src/components/icons.dart';
 
 import 'package:locus/src/components/interactable.dart';
@@ -31,7 +32,7 @@ class _HeroTag {
   int get hashCode => identityHashCode(navigator);
 }
 
-class NavigationBar extends StatefulWidget {
+class NavigationBar extends StatefulWidget with PreferredSizeWidget {
   final Widget? middle;
   final Object heroTag;
 
@@ -43,6 +44,9 @@ class NavigationBar extends StatefulWidget {
 
   @override
   State<NavigationBar> createState() => _NavigationBarState();
+
+  @override
+  Size get preferredSize => Size(280, 50);
 }
 
 class _NavigationBarState extends State<NavigationBar> {
@@ -55,46 +59,46 @@ class _NavigationBarState extends State<NavigationBar> {
       tag: widget.heroTag == kDefaultHeroTag
           ? _HeroTag(Navigator.of(context))
           : widget.heroTag,
-      child: Container(
-        clipBehavior: Clip.antiAlias,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(250),
+      child: Acrylic(
+        boxDecoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(widget.preferredSize.height / 2),
           color: LocusTheme.of(context).colorScheme.controlsSurface,
         ),
-        padding: const EdgeInsets.all(10),
-        constraints: BoxConstraints.expand(height: 50, width: 280),
-        child: Row(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  if (useCloseButton)
-                    Interactable(
-                      onTap: () => Navigator.of(context).pop(),
-                      child: Container(
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        decoration: BoxDecoration(
-                          color: LocusTheme.of(context).colorScheme.surface,
-                          borderRadius: BorderRadius.circular(20),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    if (useCloseButton)
+                      Interactable(
+                        onTap: () => Navigator.of(context).pop(),
+                        child: Container(
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            color: LocusTheme.of(context).colorScheme.surface,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Icon(LocusIcons.arrow_left),
                         ),
-                        child: Icon(LocusIcons.arrow_left),
                       ),
-                    ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            if (widget.middle != null)
-              DefaultTextStyle(
-                style: LocusTheme.of(context).typography.title,
-                child: widget.middle!,
+              if (widget.middle != null)
+                DefaultTextStyle(
+                  style: LocusTheme.of(context).typography.title,
+                  child: widget.middle!,
+                ),
+              Expanded(
+                child: Row(
+                  children: [],
+                ),
               ),
-            Expanded(
-              child: Row(
-                children: [],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

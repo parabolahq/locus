@@ -7,10 +7,10 @@ class Interactable extends StatefulWidget {
   final Function onTap;
 
   const Interactable({
-    Key? key,
+    super.key,
     required this.child,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   State<Interactable> createState() => _InteractableState();
