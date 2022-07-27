@@ -33,23 +33,21 @@ class LocusCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ClipRRect(
       clipBehavior: Clip.antiAlias,
-      padding: padding,
-      decoration: BoxDecoration(
-        borderRadius: borderRadius ?? BorderRadius.circular(20),
-        color: color ?? LocusTheme.of(context).colorScheme.controlsSurface,
+      borderRadius: borderRadius ?? BorderRadius.circular(20),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(
+          sigmaX: sigma,
+          sigmaY: sigma,
+        ),
+        child: Container(
+          padding: padding,
+          color: color ?? LocusTheme.of(context).colorScheme.controlsSurface,
+          constraints: constraints ?? BoxConstraints.expand(),
+          child: child,
+        ),
       ),
-      constraints: constraints,
-      child: sigma > 0
-          ? BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: sigma,
-                sigmaY: sigma,
-              ),
-              child: child,
-            )
-          : child,
     );
   }
 }

@@ -20,7 +20,7 @@ class Interactable extends StatefulWidget {
 
 class _InteractableState extends State<Interactable>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
+  late final AnimationController _controller;
 
   @override
   void initState() {

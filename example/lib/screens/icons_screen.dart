@@ -16,7 +16,7 @@ class _IconsScreenState extends State<IconsScreen> {
     return LocusTheme(
       data: LocusThemeData(brightness: _brightness),
       child: LocusScaffold(
-        top: NavigationBar(
+        top: LocusNavigationBar(
           middle: Text('Иконки'),
           actions: [
             LocusActionButton(
@@ -29,12 +29,9 @@ class _IconsScreenState extends State<IconsScreen> {
         ),
         body: GridView.builder(
           gridDelegate:
-              SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 65),
+              SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 60),
           itemBuilder: (BuildContext context, int index) {
-            return Icon(
-              LocusIcons.all.values.elementAt(index),
-              size: 25,
-            );
+            return Icon(LocusIcons.all.values.elementAt(index));
           },
           itemCount: LocusIcons.all.length,
         ),

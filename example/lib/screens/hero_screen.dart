@@ -46,7 +46,7 @@ class HeroScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottom: NavigationBar(
+      bottom: LocusNavigationBar(
         middle: Text('Hero'),
       ),
     );

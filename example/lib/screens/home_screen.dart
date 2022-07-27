@@ -1,6 +1,7 @@
 import 'package:locus/locus.dart';
 import 'package:locuslab/screens/icons_screen.dart';
 import 'package:locuslab/screens/hero_screen.dart';
+import 'package:locuslab/screens/tabs_screen.dart';
 import 'package:locuslab/screens/typography_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,7 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LocusScaffold(
-      bottom: NavigationBar(
+      bottom: LocusNavigationBar(
         middle: Text('Дом'),
       ),
       body: ListView(
@@ -41,6 +42,16 @@ class HomeScreen extends StatelessWidget {
             onTap: () => Navigator.of(context).push(
               LocusPageRoute(
                 builder: (BuildContext context) => IconsScreen(),
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          LocusPushButton(
+            child: Text('Таб-бар'),
+            leading: Icon(LocusIcons.tag),
+            onTap: () => Navigator.of(context).push(
+              LocusPageRoute(
+                builder: (BuildContext context) => TabsScreen(),
               ),
             ),
           ),

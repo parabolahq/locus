@@ -29,7 +29,7 @@ class LocusApp extends StatefulWidget {
 }
 
 class _LocusAppState extends State<LocusApp> {
-  late HeroController _heroController;
+  late final HeroController _heroController;
 
   @override
   void initState() {

@@ -21,7 +21,7 @@ class LocusScaffold extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     final paddings = EdgeInsets.only(
       bottom: mediaQuery.padding.bottom + mediaQuery.size.height / 8,
-      top: mediaQuery.padding.top + 10,
+      top: mediaQuery.padding.top,
       left: 15,
       right: 15,
     );
@@ -54,7 +54,7 @@ class LocusScaffold extends StatelessWidget {
                   if (bottom != null) bottom!,
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
