@@ -37,7 +37,6 @@ class _LocusNavigationBarState extends State<LocusNavigationBar> {
       child: LocusCard.acrylic(
         constraints: BoxConstraints.tight(widget.preferredSize),
         borderRadius: BorderRadius.circular(widget.preferredSize.height / 2),
-        color: LocusTheme.of(context).colorScheme.controlsSurface,
         padding: const EdgeInsets.all(10),
         child: Row(
           children: [

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:locus/locus.dart';
 import 'package:locuslab/screens/home_screen.dart';
 
@@ -16,7 +18,7 @@ class _LocusLabAppState extends State<LocusLabApp> {
     return LocusApp(
       title: 'Lab',
       home: HomeScreen(),
-      theme: LocusThemeData(),
+      theme: LocusThemeData(brightness: Brightness.dark),
     );
   }
 }

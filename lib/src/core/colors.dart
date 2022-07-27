@@ -12,11 +12,12 @@ class LocusColors {
 }
 
 class LocusColorScheme with Diagnosticable {
-  final Color onSurface, surface, controlsSurface;
+  final Color onSurface, surface, controlsSurface, acrylicSurface;
 
   const LocusColorScheme.raw({
     required this.onSurface,
     required this.surface,
+    required this.acrylicSurface,
     required this.controlsSurface,
   });
 
@@ -28,7 +29,8 @@ class LocusColorScheme with Diagnosticable {
     return LocusColorScheme.raw(
       onSurface: bright ? LocusColors.black : LocusColors.white,
       surface: bright ? LocusColors.white : LocusColors.black,
-      controlsSurface: bright
+      controlsSurface: bright ? LocusColors.lightGrey : LocusColors.darkGrey,
+      acrylicSurface: bright
           ? LocusColors.lightGrey.withOpacity(.75)
           : LocusColors.darkGrey.withOpacity(.75),
     );
@@ -37,7 +39,8 @@ class LocusColorScheme with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(ColorProperty('controlsBackground', controlsSurface));
+    properties.add(ColorProperty('controlsSurface', controlsSurface));
+    properties.add(ColorProperty('acrylicSurface', controlsSurface));
     properties.add(ColorProperty('surface', surface));
     properties.add(ColorProperty('onSurface', onSurface));
   }
@@ -48,6 +51,7 @@ class LocusColorScheme with Diagnosticable {
       onSurface: Color.lerp(a.onSurface, b.onSurface, t)!,
       surface: Color.lerp(a.surface, b.surface, t)!,
       controlsSurface: Color.lerp(a.controlsSurface, b.controlsSurface, t)!,
+      acrylicSurface: Color.lerp(a.acrylicSurface, b.acrylicSurface, t)!,
     );
   }
 
@@ -55,11 +59,13 @@ class LocusColorScheme with Diagnosticable {
     Color? onSurface,
     Color? surface,
     Color? controlsSurface,
+    Color? acrylicSurface,
   }) {
     return LocusColorScheme.raw(
       onSurface: onSurface ?? this.onSurface,
       surface: surface ?? this.surface,
       controlsSurface: controlsSurface ?? this.controlsSurface,
+      acrylicSurface: acrylicSurface ?? this.acrylicSurface,
     );
   }
 }

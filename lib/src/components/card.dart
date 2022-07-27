@@ -33,6 +33,8 @@ class LocusCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = LocusTheme.of(context);
+
     return ClipRRect(
       clipBehavior: Clip.antiAlias,
       borderRadius: borderRadius ?? BorderRadius.circular(20),
@@ -43,7 +45,10 @@ class LocusCard extends StatelessWidget {
         ),
         child: Container(
           padding: padding,
-          color: color ?? LocusTheme.of(context).colorScheme.controlsSurface,
+          color: color ??
+              (sigma > 0
+                  ? theme.colorScheme.acrylicSurface
+                  : theme.colorScheme.controlsSurface),
           constraints: constraints ?? BoxConstraints.expand(),
           child: child,
         ),
