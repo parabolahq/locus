@@ -1,8 +1,10 @@
 import 'package:locus/locus.dart';
+import 'package:locuslab/provider/theme_manager.dart';
 import 'package:locuslab/screens/icons_screen.dart';
 import 'package:locuslab/screens/hero_screen.dart';
 import 'package:locuslab/screens/tabs_screen.dart';
 import 'package:locuslab/screens/typography_screen.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,6 +14,14 @@ class HomeScreen extends StatelessWidget {
     return LocusScaffold(
       bottom: LocusNavigationBar(
         middle: Text('Дом'),
+        actions: [
+          LocusActionButton(
+            child: Icon(LocusIcons.ellipse),
+            onTap: () {
+              Provider.of<ThemeProvider>(context, listen: false).toggle();
+            },
+          )
+        ],
       ),
       body: ListView(
         padding: EdgeInsets.only(

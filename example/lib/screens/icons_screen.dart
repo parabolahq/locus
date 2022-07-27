@@ -1,40 +1,21 @@
-import 'package:flutter/services.dart';
 import 'package:locus/locus.dart';
 
-class IconsScreen extends StatefulWidget {
+class IconsScreen extends StatelessWidget {
   const IconsScreen({super.key});
 
   @override
-  State<IconsScreen> createState() => _IconsScreenState();
-}
-
-class _IconsScreenState extends State<IconsScreen> {
-  Brightness _brightness = Brightness.light;
-
-  @override
   Widget build(BuildContext context) {
-    return LocusTheme(
-      data: LocusThemeData(brightness: _brightness),
-      child: LocusScaffold(
-        top: LocusNavigationBar(
-          middle: Text('Иконки'),
-          actions: [
-            LocusActionButton(
-                child: Icon(LocusIcons.ellipse),
-                onTap: () => setState(() => _brightness =
-                    _brightness == Brightness.light
-                        ? Brightness.dark
-                        : Brightness.light))
-          ],
-        ),
-        body: GridView.builder(
-          gridDelegate:
-              SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 60),
-          itemBuilder: (BuildContext context, int index) {
-            return Icon(LocusIcons.all.values.elementAt(index));
-          },
-          itemCount: LocusIcons.all.length,
-        ),
+    return LocusScaffold(
+      top: LocusNavigationBar(
+        middle: Text('Иконки'),
+      ),
+      body: GridView.builder(
+        gridDelegate:
+            SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 60),
+        itemBuilder: (BuildContext context, int index) {
+          return Icon(LocusIcons.all.values.elementAt(index));
+        },
+        itemCount: LocusIcons.all.length,
       ),
     );
   }
