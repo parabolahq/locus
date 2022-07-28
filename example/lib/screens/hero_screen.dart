@@ -42,7 +42,7 @@ class HeroScreen extends StatelessWidget {
                   builder: (BuildContext context) => IconsScreen(),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

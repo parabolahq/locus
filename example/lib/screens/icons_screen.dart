@@ -13,7 +13,10 @@ class IconsScreen extends StatelessWidget {
         gridDelegate:
             SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 60),
         itemBuilder: (BuildContext context, int index) {
-          return Icon(LocusIcons.all.values.elementAt(index));
+          return Icon(
+            LocusIcons.all.values.elementAt(index),
+            size: 22,
+          );
         },
         itemCount: LocusIcons.all.length,
       ),

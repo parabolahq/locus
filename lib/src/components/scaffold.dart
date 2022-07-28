@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:locus/src/core/animations.dart';
 import 'package:locus/src/core/theme.dart';
 
+const double kOverlayWidgetsPadding = 10;
+
 class LocusScaffold extends StatelessWidget {
   final Widget body;
   final PreferredSizeWidget? top;
@@ -20,8 +22,10 @@ class LocusScaffold extends StatelessWidget {
     final theme = LocusTheme.of(context);
     final mediaQuery = MediaQuery.of(context);
     final paddings = EdgeInsets.only(
-      bottom: mediaQuery.padding.bottom + mediaQuery.size.height / 8,
-      top: mediaQuery.padding.top,
+      bottom: mediaQuery.padding.bottom +
+          mediaQuery.size.height / 8 +
+          kOverlayWidgetsPadding,
+      top: mediaQuery.padding.top + kOverlayWidgetsPadding / 2,
       left: 15,
       right: 15,
     );
@@ -40,7 +44,9 @@ class LocusScaffold extends StatelessWidget {
               child: body,
               data: mediaQuery.copyWith(
                 padding: EdgeInsets.only(
-                  top: paddings.top + (top?.preferredSize.height ?? 0),
+                  top: paddings.top +
+                      (top?.preferredSize.height ?? 0) +
+                      kOverlayWidgetsPadding,
                 ),
               ),
             ),

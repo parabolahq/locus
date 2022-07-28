@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:locus/locus.dart';
 import 'package:locuslab/provider/theme_manager.dart';
 import 'package:locuslab/screens/home_screen.dart';

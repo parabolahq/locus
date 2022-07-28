@@ -53,7 +53,7 @@ class _LocusNavigationBarState extends State<LocusNavigationBar> {
               ),
             ),
             DefaultTextStyle(
-              style: LocusTheme.of(context).typography.title,
+              style: LocusTheme.of(context).typography.body1,
               child: widget.middle,
             ),
             Expanded(

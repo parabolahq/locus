@@ -31,8 +31,8 @@ class LocusColorScheme with Diagnosticable {
       surface: bright ? LocusColors.white : LocusColors.black,
       controlsSurface: bright ? LocusColors.lightGrey : LocusColors.darkGrey,
       acrylicSurface: bright
-          ? LocusColors.lightGrey.withOpacity(.75)
-          : LocusColors.darkGrey.withOpacity(.75),
+          ? LocusColors.lightGrey.withOpacity(.6)
+          : LocusColors.darkGrey.withOpacity(.6),
     );
   }
 

@@ -55,7 +55,7 @@ class _InheritedLocusTheme extends InheritedTheme {
 }
 
 class LocusThemeData with Diagnosticable {
-  final Brightness? brightness;
+  final Brightness brightness;
   final LocusTypography? _typography;
   final LocusColorScheme? _colorScheme;
   final LocusIconTheme? _iconTheme;

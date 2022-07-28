@@ -1,6 +1,6 @@
 name: locuslab
 description: A Locus experiences collection
-version: 1.0.0+6
+version: 1.0.0+7
 publish_to: 'none'
 
 environment:

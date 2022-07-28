@@ -17,6 +17,7 @@ export 'src/components/scaffold.dart';
 export 'src/components/interactable.dart';
 export 'src/components/navigation_bar.dart';
 export 'src/components/tab_bar.dart';
+export 'src/components/entry.dart';
 
 // Buttons
 export 'src/components/buttons/push_button.dart';

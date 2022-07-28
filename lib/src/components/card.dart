@@ -49,7 +49,7 @@ class LocusCard extends StatelessWidget {
               (sigma > 0
                   ? theme.colorScheme.acrylicSurface
                   : theme.colorScheme.controlsSurface),
-          constraints: constraints ?? BoxConstraints.expand(),
+          constraints: constraints ?? null,
           child: child,
         ),
       ),

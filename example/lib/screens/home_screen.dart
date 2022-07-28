@@ -1,5 +1,6 @@
 import 'package:locus/locus.dart';
 import 'package:locuslab/provider/theme_manager.dart';
+import 'package:locuslab/screens/entry_screen.dart';
 import 'package:locuslab/screens/icons_screen.dart';
 import 'package:locuslab/screens/hero_screen.dart';
 import 'package:locuslab/screens/tabs_screen.dart';
@@ -75,6 +76,16 @@ class HomeScreen extends StatelessWidget {
                 LocusPageRoute(
                   builder: (BuildContext context) => HeroScreen(),
                 ),
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          LocusPushButton(
+            child: Text('Поля для ввода'),
+            leading: Icon(LocusIcons.square),
+            onTap: () => Navigator.of(context).push(
+              LocusPageRoute(
+                builder: (BuildContext context) => EntryScreen(),
               ),
             ),
           ),
