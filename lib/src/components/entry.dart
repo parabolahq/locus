@@ -25,8 +25,13 @@ class _LocusEntryState extends State<LocusEntry> {
   @override
   void initState() {
     super.initState();
-
     _effectiveController = widget.controller ?? TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _effectiveController.dispose();
   }
 
   @override
@@ -35,14 +40,27 @@ class _LocusEntryState extends State<LocusEntry> {
       constraints: BoxConstraints.expand(height: 50),
       padding: const EdgeInsets.all(15),
       borderRadius: BorderRadius.circular(400),
-      child: EditableText(
-        keyboardAppearance: LocusTheme.of(context).brightness,
-        backgroundCursorColor:
-            LocusTheme.of(context).colorScheme.controlsSurface,
-        controller: _effectiveController,
-        cursorColor: LocusTheme.of(context).colorScheme.onSurface,
-        focusNode: _effectiveFocusNode,
-        style: widget.style ?? DefaultTextStyle.of(context).style,
+      child: AnimatedBuilder(
+        animation: _effectiveController,
+        builder: (BuildContext context, Widget? child) {
+          return Stack(children: [
+            if (_effectiveController.text.isEmpty)
+              Opacity(
+                opacity: .5,
+                child: Text('Placeholder'),
+              ),
+            child!,
+          ]);
+        },
+        child: EditableText(
+          keyboardAppearance: LocusTheme.of(context).brightness,
+          backgroundCursorColor:
+              LocusTheme.of(context).colorScheme.controlsSurface,
+          controller: _effectiveController,
+          cursorColor: LocusTheme.of(context).colorScheme.onSurface,
+          focusNode: _effectiveFocusNode,
+          style: widget.style ?? DefaultTextStyle.of(context).style,
+        ),
       ),
     );
   }

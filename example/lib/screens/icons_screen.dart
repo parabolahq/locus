@@ -15,7 +15,7 @@ class IconsScreen extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Icon(
             LocusIcons.all.values.elementAt(index),
-            size: 22,
+            size: 25,
           );
         },
         itemCount: LocusIcons.all.length,

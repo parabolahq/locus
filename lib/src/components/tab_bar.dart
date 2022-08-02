@@ -53,6 +53,7 @@ class _LocusTabBarState extends State<LocusTabBar>
                     ),
                     Expanded(
                       child: LocusCard(
+                        constraints: BoxConstraints.expand(),
                         color: Color.lerp(
                           LocusColors.grey,
                           LocusTheme.of(context).colorScheme.surface,
