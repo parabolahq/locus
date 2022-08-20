@@ -89,7 +89,7 @@ class LocusTypography with Diagnosticable {
       ),
       caption1: TextStyle(
         color: data.colorScheme.onSurface,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w800,
         fontFamily: fontFamily,
         fontSize: 14,
         package: 'locus',

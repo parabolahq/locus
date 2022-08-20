@@ -33,7 +33,8 @@ flutter:
         - asset: fonts/Manrope-Bold.otf
           weight: 700
         - asset: fonts/Manrope-ExtraBold.otf
-          weight: 700
+          weight: 800
+      
     - family: LocusIcons
       fonts:
         - asset: fonts/icon_font.ttf
