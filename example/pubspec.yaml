@@ -13,7 +13,7 @@ dependencies:
   locus:
     path: ../
   
-  provider: ^6.0.4
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:
