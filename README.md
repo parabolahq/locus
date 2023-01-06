@@ -8,5 +8,4 @@
 At the `example/` directory you can find the "Locus Lab".
 This is an app that helps to showcase and test UI components.
 
-- [Get the latest build from TestFlight](https://testflight.apple.com/)
-- [Open Progressive Web App build](https://locuslab.parabola.study/#)
+- [Get the latest build from TestFlight](https://testflight.apple.com/join/vHsqd8Dn)
